@@ -1,26 +1,3 @@
-<!--@@ Start Edit Plus Section @@-->
-<MySource_AREA id_name="edit_plus_exit_area" design_area="exit" print="no"></MySource_AREA>
-<MySource_AREA id_name="edit_plus_token" design_area="csrf_token" print="no"></mysource_area>
-<MySource_AREA id_name="edit_plus_nested_content" design_area="nest_content" print="no" />
-<MySource_AREA id_name="edit_plus_show_if" design_area="show_if">  
-   <MySource_SET name="condition" value="simple_edit_mode" />  
-   <MySource_THEN>        
-      <!DOCTYPE html>    
-      <html lang="en">      
-      <head>        
-         <meta charset="utf-8" />        
-         <title>Loading Edit Mode...</title>        
-         <MySource_PRINT id_name="edit_plus_nested_content" />      
-      </head>      
-      <body>        
-         <mysource_print id_name="edit_plus_token" />      
-      </body>    
-   </html>        
-   <MySource_PRINT id_name="edit_plus_exit_area" /></MySource_THEN>
-</MySource_AREA> 
-
-<!--@@ Start Edit Plus Section @@-->
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -32,7 +9,7 @@
 <MySource_AREA id_name="GA_code" design_area="nest_content" /><!--@@ Google Analytics code @@-->
 </head>
 <body>
-    <div class="header" id="ban">
+   <div class="header" id="ban">
         <div class="container">
             <div class="head-left wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
                 <div class="header-search">
@@ -100,81 +77,85 @@
             </div>
         </div>
     </div>
-<!-- banner -->
-<MySource_AREA id_name="banner" design_area="nest_content" />
-<!-- div class="banner">
-    <div class="container">    
-        <h2>A Friendly Place for Solo Festival Goers</h2>
-        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-        <a href="singlepage.html">Find out more</a>
-    </div>
-</div -->
-<MySource_AREA id_name="home_nested" design_area="nest_content" />
-
-    <!-- main content technology-left -->
     <div class="technology">
     <div class="container">
-        <div class="col-md-9 technology-left">
-        <!-- main content -->
-        <MySource_AREA id_name="body" design_area="body" />
+        <div class="col-md-12 technology-left">
+        	<!--@@ Login stuff goes here @@-->
+        	<div class="page-header">
+				<h3>Login</h3>
+			</div>
+        	<MySource_AREA id_name="login_form" design_area="login_form">
+        	<MySource_LOGIN_SECTION>
+
+		        <MySource_SET name="forward_www_vars"    value="true" />
+
+		        <div class="bs-example animated wow fadeInRight" data-wow-duration="1000ms" data-example-id="simple-horizontal-form">
+
+			        <MySource_PRINT var="form_open" class="form-horizontal" />
+
+			        <p class="sq-login-message"><MySource_PRINT var="login_message" />.</p>
+
+			        <p class="sq-login-message" id="sq-current-user">Currently logged in as: <strong id="sq-current-user-name"><MySource_PRINT id_name="__global__" var="current_user" default="[Not logged in]" attr="name" /></strong></p>
+
+			        <div id="sq-message" class="sq-message">
+			          <MySource_PRINT var="system_messages" />
+			        </div>
+
+			        <script>
+			        <!-- //<![CDATA[
+			          var msgsDiv = document.getElementById('sq-message');
+			          if (msgsDiv.innerHTML.replace( /\s/g, '') == '') {
+			            msgsDiv.style.display = 'none';
+			          }
+			          var currentName = document.getElementById('sq-current-user-name');
+			          if (currentName.innerHTML == '[Not logged in]') {
+			            document.getElementById('sq-current-user').style.display = 'none';
+			          }
+			        //]]> -->
+			        </script>
+
+			        <div class="form-group">
+						<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-10">
+						  <!-- input type="email" class="form-control" id="inputEmail3" placeholder="Email" -->
+						  <MySource_PRINT var="username_box" size="10" class="sq-data form-control" id="inputEmail3" placeholder="Email" required="required" autofocus="autofocus"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-10">
+						  <!-- input type="password" class="form-control" id="inputPassword3" placeholder="Password" -->
+						  <MySource_PRINT var="password_box" size="10" class="sq-data form-control"  id="inputPassword3" placeholder="Password" required="required" autocomplete="off"/>
+						</div>
+					</div>
+
+			        <!-- div class="sq-credentials-section">
+			          <div class="sq-field-wrapper">
+			            <label for="SQ_LOGIN_USERNAME">Username</label> 
+			            <MySource_PRINT var="username_box" size="10" class="sq-data" required="required" autofocus="autofocus"/>
+			          </div>
+			          <div class="sq-field-wrapper">
+			            <label for="SQ_LOGIN_PASSWORD">Password</label> 
+			            <MySource_PRINT var="password_box" size="10" class="sq-data" required="required" autocomplete="off"/>
+			          </div>
+			        </div -->
+
+			        <div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+						  <!-- button type="submit" class="btn btn-default">Sign in</button -->
+						  <MySource_PRINT var="submit_button" value="Login" class="sq-data btn btn-default" />
+						</div>
+					</div>
+
+			        <MySource_PRINT var="form_close" />
+
+		    	</div>
+
+		      </MySource_LOGIN_SECTION>
+
+		    </MySource_AREA>
         </div>
-        <!-- right hand column search & login stuff technology-right -->
-        <div class="col-md-3 technology-right">
-                
-                
-                <div class="blo-top1">
-                    <!-- Right hand content here -->
-                </div>
-                
-            
-        </div>
-        <div class="clearfix"></div>
-        <!-- technology-right -->
     </div>
 </div>
-<div class="footer">
-        <div class="container">
-            <div class="col-md-4 footer-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-                <h4>About Me</h4>
-                <p>Consectetur adipisicing Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-                <img src="./?a=131:Images/t4.jpg" class="img-responsive" alt="">
-                    <div class="bht1">
-                        <a href="singlepage.html">Read More</a>
-                    </div>
-            </div>
-            <div class="col-md-4 footer-middle wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-            <h4>Latest Tweet</h4>
-            <div class="mid-btm">
-                <p>Sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-                <a href="https://w3layouts.com/">https://w3layouts.com/</a>
-            </div>
-            
-                <p>Consectetur adipisicing Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-                <a href="https://w3layouts.com/">https://w3layouts.com/</a>
-        
-            </div>
-            <div class="col-md-4 footer-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-                <h4>Newsletter</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                        <div class="name">
-                            <form action="#" method="post">
-                                <input type="text" placeholder="Your Name" required="">
-                                <input type="text" placeholder="Your Email" required="">
-                                <input type="submit" value="Subscribed Now">
-                            </form>
-                        
-                        </div>    
-                        
-                            <div class="clearfix"> </div>
-                    
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <!-- div class="copyright wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-                <div class="container">
-                    <p>© 2016 Style Blog. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-                </div>
-            </div -->
 </body>
 </html>
