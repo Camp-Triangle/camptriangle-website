@@ -24,7 +24,7 @@
 			vache                 : true,					
 			separator1            : ' | ',						
 			separator2            : '/',						
-			leftImg               : '../Images/left.png',	
+			leftImg               : 'http://beta.camptriangle.co.uk/__data/assets/git_bridge/0005/131/Images/left.png',	
 			rightImg              : '../Images/right.png',	
 			closeImg              : '../Images/close.png',		
 			loadingImg            : '../Images/loading.gif',		
