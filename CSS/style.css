@@ -2439,13 +2439,14 @@ label.icon-search span {
 }
 
 section {
-    border: 2px solid red;
+    color: red;
+    border: none;
     border-radius: 5px;
     padding: 5px;
 }
 
 section h1, section h2, section h3 {
-  color: red;
+  color: white;
   font-weight: 400;
   text-align: center;
 }
