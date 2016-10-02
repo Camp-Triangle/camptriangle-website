@@ -2439,7 +2439,7 @@ label.icon-search span {
 }
 
 section {
-    color: red;
+    background-color: red;
     border: none;
     border-radius: 5px;
     padding: 5px;
