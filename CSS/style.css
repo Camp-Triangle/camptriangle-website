@@ -2437,3 +2437,15 @@ label.icon-search span {
     width: 74%;
 }
 }
+
+section {
+    border: 2px solid red;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+section h1, section h2, section h3 {
+  color: red;
+  font-weight: 400;
+  text-align: center;
+}
