@@ -1547,7 +1547,7 @@ p.reply i{
     margin-top: 2em;
 	padding-bottom:1em;
 }
-.media-left.response-text-left a img {
+.media-left.response-text-left a img, .media-left.response-text-left span img {
     border-radius:50%;
 	-o-border-radius:50%;
 	-webkit-border-radius:50%;
