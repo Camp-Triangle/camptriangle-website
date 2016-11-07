@@ -169,6 +169,6 @@ var EasyEditConfig = {
     // Selects a Google Analytics View to view analytics data through. This enables
     // the "Analytics" screen. Note that URLs must match between Matrix and Google
     // Analytics for this to generate data.
-    analyticsViewId: null
+    analyticsViewId: 2225
 
 }; // End EasyEditConfig.
