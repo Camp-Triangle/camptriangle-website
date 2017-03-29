@@ -28,13 +28,13 @@ body{
 }
 #Choco_left_arrow{
 	float:left;
-	background-image:url(./?a=131:Images/left.png)!important;
+	background-image:url(https://camptriangle.co.uk/_des?a=131:Images/left.png)!important;
 	background-position:12%;
 	left:-20%;
 }
 #Choco_right_arrow{
 	float:right;
-	background-image:url(../Images/right.png)!important;
+	background-image:url(https://camptriangle.co.uk/_des?a=131:Images/right.png)!important;
 	background-position:88%;
 	left:20%;
 }
@@ -85,7 +85,7 @@ body{
 #Choco_close{
 	width:30px;
 	height:25px;
-	background-image:url(../Images/close.png)!important;
+	background-image:url(https://camptriangle.co.uk/_des?a=131:Images/close.png)!important;
 	background-repeat:no-repeat;
 	z-index:1002;
 	cursor:pointer;
@@ -95,7 +95,7 @@ body{
 #Choco_loading{
 	width:9px;
 	height:11px;
-	background-image:url(../Images/loading.gif);
+	background-image:url(https://camptriangle.co.uk/_des?a=131:Images/loading.gif);
 	background-repeat:no-repeat;
 	z-index:1002;
 	cursor:pointer;
