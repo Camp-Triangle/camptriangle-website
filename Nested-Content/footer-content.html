@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="col-md-6 footer-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+        <img src="%globals_asset_thumbnail_v_foot_url%" class="img-responsive" alt="%globals_asset_thumbnail_alt%">
+    </div>
+    <div class="col-md-6 footer-middle wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+        <h4>Photo Information</h4>
+        <p><strong>Photographer</strong></p>
+        <p>%globals_asset_thumbnail_assetid^as_asset:asset_created_by_first_name%</p>
+        <p><strong>Photo Source</strong></p>
+        <p><a href="%globals_asset_thumbnail_assetid^as_asset:asset_metadata_photoSource%">%globals_asset_thumbnail_assetid^as_asset:asset_metadata_photoSource%</a></p>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<script>
+    if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('./?a=xxxx')
+        .then( function (){
+            console.log('Success!');
+        })
+        .catch( function () {
+            console.error('Failure!');
+        });
+    console.log('All done');
+    }
+</script>
