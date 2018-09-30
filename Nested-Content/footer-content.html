@@ -18,8 +18,8 @@
         .then( function (registration){
             console.log('Success!', registration.scope);
         })
-        .catch( function () {
-            console.error('Failure!');
+        .catch( function (error) {
+            console.error('Failure!', error);
         });
     console.log('All done');
     }
