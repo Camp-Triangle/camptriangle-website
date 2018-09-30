@@ -1,56 +1,71 @@
 <!--@@ Start Edit Plus Section @@-->
-<MySource_AREA id_name="edit_plus_exit_area" design_area="exit" print="no"></MySource_AREA>
-<MySource_AREA id_name="edit_plus_token" design_area="csrf_token" print="no"></mysource_area>
-<MySource_AREA id_name="edit_plus_nested_content" design_area="nest_content" print="no" />
-<MySource_AREA id_name="edit_plus_show_if" design_area="show_if">  
-   <MySource_SET name="condition" value="simple_edit_mode" />  
-   <MySource_THEN>        
-      <!DOCTYPE html>    
-      <html lang="en">      
-      <head>        
-         <meta charset="utf-8" />        
-         <title>Loading Edit Mode...</title>        
-         <MySource_PRINT id_name="edit_plus_nested_content" />      
-      </head>      
-      <body>        
-         <mysource_print id_name="edit_plus_token" />      
-      </body>    
-   </html>        
-   <MySource_PRINT id_name="edit_plus_exit_area" /></MySource_THEN>
-</MySource_AREA> 
-
+<mysource_area id_name="editplus_custom" design_area="nest_content" print="no" />
+<mysource_area id_name="editplus" design_area="editplus">
+    <mysource_print id_name="editplus_custom" />
+</mysource_area>
+<!-- mysource_area id_name="csrf_token" design_area="csrf_token" / -->
 <!--@@ Start Edit Plus Section @@-->
 
 <!DOCTYPE HTML>
-<html>
+<html lang="en-GB">
 <head>
-<title><MySource_PRINT id_name="__global__" var="site_name" /> - <MySource_PRINT id_name="__global__" var="asset_name" /></title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<MySource_AREA id_name="metadata" design_area="metadata" />
-<MySource_AREA id_name="styles_scripts" design_area="nest_content" /><!--@@ For loading in the css & js in the head @@-->
-<MySource_AREA id_name="GA_code" design_area="nest_content" /><!--@@ Google Analytics code @@-->
+<!--
+        _____                        _______   _                   _      
+       / ____|                      |__   __| (_)                 | |     
+      | |     __ _ _ __ ___  _ __      | |_ __ _  __ _ _ __   __ _| | ___ 
+      | |    / _` | '_ ` _ \| '_ \     | | '__| |/ _` | '_ \ / _` | |/ _ \
+      | |___| (_| | | | | | | |_) |    | | |  | | (_| | | | | (_| | |  __/
+       \_____\__,_|_| |_| |_| .__/     |_|_|  |_|\__,_|_| |_|\__, |_|\___|
+                            | |                               __/ |       
+                            |_|                              |___/        
+
+        _____                               _           _                
+       |  __ \                             | |         (_)               
+       | |__) |__ _ __  _ __   __ _ _ __ __| |___   ___ _ _ __   ___ ___ 
+       |  ___/ _ \ '_ \| '_ \ / _` | '__/ _` / __| / __| | '_ \ / __/ _ \
+       | |  |  __/ | | | | | | (_| | | | (_| \__ \ \__ \ | | | | (_|  __/
+       |_|   \___|_| |_|_| |_|\__,_|_|  \__,_|___/ |___/_|_| |_|\___\___|
+                                                                         
+                                                                         
+                             ___   ___   ___   ___  
+                            |__ \ / _ \ / _ \ / _ \ 
+                               ) | | | | | | | (_) |
+                              / /| | | | | | |> _ < 
+                             / /_| |_| | |_| | (_) |
+                            |____|\___/ \___/ \___/ 
+                                                    
+                                                    
+-->
+    <title><mysource_print id_name="__global__" var="site_name" /> - <mysource_print id_name="__global__" var="asset_name" /></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <mysource_area id_name="metadata" design_area="metadata" />
+    <mysource_area id_name="styles_scripts" design_area="nest_content" /><!--@@ For loading in the css & js in the head @@-->
+    <mysource_area id_name="GA_code" design_area="nest_content" /><!--@@ Google Analytics code @@-->
 </head>
 <body>
     <div class="header" id="ban">
         <div class="container">
-            <div class="head-left wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+            <div class="head-left">
                 <div class="header-search">
                         <div class="search">
+                            <label for="search_box" style="display:none">Search</label>
                             <input class="search_box" type="checkbox" id="search_box">
                             <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
                             <div class="search_form">
                                 <form action="#" method="post">
-                                    <input type="text" name="Search" placeholder="Search...">
+                                    <label for="search" style="display:none">Search</label>
+                                    <input type="text" id="search" name="Search" placeholder="Search...">
                                     <input type="submit" value="Send">
                                 </form>
                             </div>
                         </div>
                 </div>
             </div>
-            <div class="header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+            <div class="header_right">
             <nav class="navbar navbar-default">
-                <!-- Brand and toggle get grouped for better mobile display -->
+                <!--@@ Brand and toggle get grouped for better mobile display @@-->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
@@ -60,121 +75,70 @@
                     </button>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <MySource_AREA id_name="top_nav" design_area="menu_normal">
-                    <MySource_SET name="level" value="top" />
-                    <MySource_SET name="settings.class.normal" value="" />
-                    <MySource_SET name="settings.class.current" value="class='active act'" />
-                    <MySource_SET name="settings.class.hierarchy" value="class='active act'" />
+                <!--@@ Collect the nav links, forms, and other content for toggling @@-->
+                <mysource_area id_name="top_nav" design_area="menu_normal">
+                    <mysource_set name="level" value="top" />
+                    <mysource_set name="settings.class.normal" value="" />
+                    <mysource_set name="settings.class.current" value="class='active act'" />
+                    <mysource_set name="settings.class.hierarchy" value="class='active act'" />
                     <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                         <nav class="link-effect-7" id="link-effect-7">
                             <ul class="nav navbar-nav">
                             <MySource_ASSET>
-                                <li <MySource_PRINT var="settings.class" />><a href="<MySource_PRINT var='asset_url' />"><MySource_PRINT var="asset_attribute_short_name" /></a></li>
+                                <li <mysource_print var="settings.class" />><a href="<mysource_print var='asset_url' />"><mysource_print var="asset_attribute_name" /></a></li>
                             </MySource_ASSET>
                             </ul>
                         </nav>
                     </div>
-                </MySource_AREA>
+                </mysource_area>
             </nav>
             </div>
-            <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
-                    <ul>
-                        <li><a href="#"> </a></li>
-                        <li><a href="#" class="pin"> </a></li>
-                        <li><a href="#" class="in"> </a></li>
-                        <li><a href="#" class="be"> </a></li>
-                        
-                        <li><a href="#" class="vimeo"> </a></li>
-                    </ul>
-                </div>
+            <mysource_area id_name="buttons" design_area="nest_content" />
             <div class="clearfix"> </div>    
         </div>
     </div>
-    <!--start-main-->
+    <!--@@ start-main @@-->
     <div class="header-bottom">
         <div class="container">
-            <div class="logo wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+            <div class="logo">
                 <h1><a href="./?a=72">Camp Triangle</a></h1>
-                <p><label class="of"></label>Pennards since 2007.<label class="on"></label></p>
+                <p>Pennards since 2007</p>
             </div>
         </div>
     </div>
-<!-- banner -->
-<MySource_AREA id_name="banner" design_area="nest_content" />
-<!-- div class="banner">
-    <div class="container">    
-        <h2>A Friendly Place for Solo Festival Goers</h2>
-        <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-        <a href="singlepage.html">Find out more</a>
-    </div>
-</div -->
-<MySource_AREA id_name="home_nested" design_area="nest_content" />
+<!--@@ banner @@-->
+<mysource_area id_name="banner" design_area="nest_content" />
+<mysource_area id_name="home_nested" design_area="nest_content" />
 
-    <!-- main content technology-left -->
+    <!--@@ main content technology-left @@-->
     <div class="technology">
     <div class="container">
         <div class="col-md-9 technology-left">
-        <!-- main content -->
-        <MySource_AREA id_name="body" design_area="body" />
+            <div class="w3agile-1">
+            <mysource_area id_name="page_header" design_area="nest_content" />
+        <!--@@ main content @@-->
+        <div id="<mysource_print id_name='__global__' var='asset_metadata_ajax' />"><mysource_area id_name="body" design_area="body" /></div>
         </div>
-        <!-- right hand column search & login stuff technology-right -->
+        </div>
+        <!--@@ right hand column search & login stuff technology-right @@-->
         <div class="col-md-3 technology-right">
                 
                 
                 <div class="blo-top1">
-                    <!-- Right hand content here -->
+                    <!--@@ Right hand content here @@-->
+                    <mysource_area id_name="rhc" design_area="nest_content" />
                 </div>
                 
             
         </div>
         <div class="clearfix"></div>
-        <!-- technology-right -->
+        <!--@@ technology-right @@-->
     </div>
 </div>
 <div class="footer">
-        <div class="container">
-            <div class="col-md-4 footer-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-                <h4>About Me</h4>
-                <p>Consectetur adipisicing Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-                <img src="./?a=131:Images/t4.jpg" class="img-responsive" alt="">
-                    <div class="bht1">
-                        <a href="singlepage.html">Read More</a>
-                    </div>
-            </div>
-            <div class="col-md-4 footer-middle wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-            <h4>Latest Tweet</h4>
-            <div class="mid-btm">
-                <p>Sed do eiusmod tempor Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-                <a href="https://w3layouts.com/">https://w3layouts.com/</a>
-            </div>
-            
-                <p>Consectetur adipisicing Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod .</p>
-                <a href="https://w3layouts.com/">https://w3layouts.com/</a>
-        
-            </div>
-            <div class="col-md-4 footer-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-                <h4>Newsletter</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt</p>
-                        <div class="name">
-                            <form action="#" method="post">
-                                <input type="text" placeholder="Your Name" required="">
-                                <input type="text" placeholder="Your Email" required="">
-                                <input type="submit" value="Subscribed Now">
-                            </form>
-                        
-                        </div>    
-                        
-                            <div class="clearfix"> </div>
-                    
-            </div>
-            <div class="clearfix"></div>
-        </div>
+        <mysource_area id_name="footer_content" design_area="nest_content" />
     </div>
-    <!-- div class="copyright wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-                <div class="container">
-                    <p>© 2016 Style Blog. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-                </div>
-            </div -->
+<mysource_area id_name="ajax" design_area="nest_content" print="no" />
+<mysource_area id_name="set_metadata_token" design_area="csrf_token" print="no"></mysource_area>
 </body>
 </html>

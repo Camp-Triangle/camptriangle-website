@@ -1,12 +1,39 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title><MySource_PRINT id_name="__global__" var="site_name" /> - <MySource_PRINT id_name="__global__" var="asset_name" /></title>
+<!--
+        _____                        _______   _                   _      
+       / ____|                      |__   __| (_)                 | |     
+      | |     __ _ _ __ ___  _ __      | |_ __ _  __ _ _ __   __ _| | ___ 
+      | |    / _` | '_ ` _ \| '_ \     | | '__| |/ _` | '_ \ / _` | |/ _ \
+      | |___| (_| | | | | | | |_) |    | | |  | | (_| | | | | (_| | |  __/
+       \_____\__,_|_| |_| |_| .__/     |_|_|  |_|\__,_|_| |_|\__, |_|\___|
+                            | |                               __/ |       
+                            |_|                              |___/        
+
+        _____                               _           _                
+       |  __ \                             | |         (_)               
+       | |__) |__ _ __  _ __   __ _ _ __ __| |___   ___ _ _ __   ___ ___ 
+       |  ___/ _ \ '_ \| '_ \ / _` | '__/ _` / __| / __| | '_ \ / __/ _ \
+       | |  |  __/ | | | | | | (_| | | | (_| \__ \ \__ \ | | | | (_|  __/
+       |_|   \___|_| |_|_| |_|\__,_|_|  \__,_|___/ |___/_|_| |_|\___\___|
+                                                                         
+                                                                         
+                             ___   ___   ___   ___  
+                            |__ \ / _ \ / _ \ / _ \ 
+                               ) | | | | | | | (_) |
+                              / /| | | | | | |> _ < 
+                             / /_| |_| | |_| | (_) |
+                            |____|\___/ \___/ \___/ 
+                                                    
+                                                    
+-->
+<title><mysource_print id_name="__global__" var="site_name" /> - <mysource_print id_name="__global__" var="asset_name" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<MySource_AREA id_name="metadata" design_area="metadata" />
-<MySource_AREA id_name="styles_scripts" design_area="nest_content" /><!--@@ For loading in the css & js in the head @@-->
-<MySource_AREA id_name="GA_code" design_area="nest_content" /><!--@@ Google Analytics code @@-->
+<mysource_area id_name="metadata" design_area="metadata" />
+<mysource_area id_name="styles_scripts" design_area="nest_content" /><!--@@ For loading in the css & js in the head @@-->
+
 </head>
 <body>
    <div class="header" id="ban">
@@ -38,33 +65,23 @@
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <MySource_AREA id_name="top_nav" design_area="menu_normal">
-                    <MySource_SET name="level" value="top" />
-                    <MySource_SET name="settings.class.normal" value="" />
-                    <MySource_SET name="settings.class.current" value="class='active act'" />
-                    <MySource_SET name="settings.class.hierarchy" value="class='active act'" />
+                <mysource_area id_name="top_nav" design_area="menu_normal">
+                    <mysource_set name="level" value="top" />
+                    <mysource_set name="settings.class.normal" value="" />
+                    <mysource_set name="settings.class.current" value="class='active act'" />
+                    <mysource_set name="settings.class.hierarchy" value="class='active act'" />
                     <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                         <nav class="link-effect-7" id="link-effect-7">
                             <ul class="nav navbar-nav">
-                            <MySource_ASSET>
-                                <li <MySource_PRINT var="settings.class" />><a href="<MySource_PRINT var='asset_url' />"><MySource_PRINT var="asset_attribute_short_name" /></a></li>
-                            </MySource_ASSET>
+                            <mysource_asset>
+                                <li <mysource_print var="settings.class" />><a href="<mysource_print var='asset_url' />"><mysource_print var="asset_attribute_name" /></a></li>
+                            </mysource_asset>
                             </ul>
                         </nav>
                     </div>
-                </MySource_AREA>
+                </mysource_area>
             </nav>
             </div>
-            <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
-                    <ul>
-                        <li><a href="#"> </a></li>
-                        <li><a href="#" class="pin"> </a></li>
-                        <li><a href="#" class="in"> </a></li>
-                        <li><a href="#" class="be"> </a></li>
-                        
-                        <li><a href="#" class="vimeo"> </a></li>
-                    </ul>
-                </div>
             <div class="clearfix"> </div>    
         </div>
     </div>
@@ -73,89 +90,70 @@
         <div class="container">
             <div class="logo wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
                 <h1><a href="./?a=72">Camp Triangle</a></h1>
-                <p><label class="of"></label>Pennards since 2007.<label class="on"></label></p>
+                <p>Pennards since 2007.</p>
             </div>
         </div>
     </div>
     <div class="technology">
     <div class="container">
-        <div class="col-md-12 technology-left">
-        	<!--@@ Login stuff goes here @@-->
-        	<div class="page-header">
-				<h3>Login</h3>
-			</div>
-        	<MySource_AREA id_name="login_form" design_area="login_form">
-        	<MySource_LOGIN_SECTION>
-
-		        <MySource_SET name="forward_www_vars"    value="true" />
-
-		        <div class="bs-example animated wow fadeInRight" data-wow-duration="1000ms" data-example-id="simple-horizontal-form">
-
-			        <MySource_PRINT var="form_open" class="form-horizontal" />
-
-			        <p class="sq-login-message"><MySource_PRINT var="login_message" />.</p>
-
-			        <p class="sq-login-message" id="sq-current-user">Currently logged in as: <strong id="sq-current-user-name"><MySource_PRINT id_name="__global__" var="current_user" default="[Not logged in]" attr="name" /></strong></p>
-
-			        <div id="sq-message" class="sq-message">
-			          <MySource_PRINT var="system_messages" />
-			        </div>
-
-			        <script>
-			        <!-- //<![CDATA[
-			          var msgsDiv = document.getElementById('sq-message');
-			          if (msgsDiv.innerHTML.replace( /\s/g, '') == '') {
-			            msgsDiv.style.display = 'none';
-			          }
-			          var currentName = document.getElementById('sq-current-user-name');
-			          if (currentName.innerHTML == '[Not logged in]') {
-			            document.getElementById('sq-current-user').style.display = 'none';
-			          }
-			        //]]> -->
-			        </script>
-
-			        <div class="form-group">
-						<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-						<div class="col-sm-10">
-						  <!-- input type="email" class="form-control" id="inputEmail3" placeholder="Email" -->
-						  <MySource_PRINT var="username_box" size="10" class="sq-data form-control" id="inputEmail3" placeholder="Email" required="required" autofocus="autofocus"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-						<div class="col-sm-10">
-						  <!-- input type="password" class="form-control" id="inputPassword3" placeholder="Password" -->
-						  <MySource_PRINT var="password_box" size="10" class="sq-data form-control"  id="inputPassword3" placeholder="Password" required="required" autocomplete="off"/>
-						</div>
-					</div>
-
-			        <!-- div class="sq-credentials-section">
-			          <div class="sq-field-wrapper">
-			            <label for="SQ_LOGIN_USERNAME">Username</label> 
-			            <MySource_PRINT var="username_box" size="10" class="sq-data" required="required" autofocus="autofocus"/>
-			          </div>
-			          <div class="sq-field-wrapper">
-			            <label for="SQ_LOGIN_PASSWORD">Password</label> 
-			            <MySource_PRINT var="password_box" size="10" class="sq-data" required="required" autocomplete="off"/>
-			          </div>
-			        </div -->
-
-			        <div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-						  <!-- button type="submit" class="btn btn-default">Sign in</button -->
-						  <MySource_PRINT var="submit_button" value="Login" class="sq-data btn btn-default" />
-						</div>
-					</div>
-
-			        <MySource_PRINT var="form_close" />
-
-		    	</div>
-
-		      </MySource_LOGIN_SECTION>
-
-		    </MySource_AREA>
+        <div>
+            <div class="w3agile-1">
+            <!--@@ Login stuff goes here @@-->
+            <div class="page-header">
+                <h2 class="w3">Login</h2>
+            </div>
+            <mysource_area id_name="login_form" design_area="login_form">
+              <mysource_login_section>
+                <mysource_set name="forward_www_vars"    value="true" />
+                <div class="bs-example animated wow fadeInRight" data-wow-duration="1000ms" data-example-id="simple-horizontal-form">
+                    <mysource_print var="form_open" class="form-horizontal" />
+                    <div id="sq-message" class="sq-message">
+                      <mysource_print var="system_messages" />
+                    </div>
+                    <script>
+                    <!-- //<![CDATA[
+                      var msgsDiv = document.getElementById('sq-message');
+                      if (msgsDiv.innerHTML.replace( /\s/g, '') == '') {
+                        msgsDiv.style.display = 'none';
+                      }
+                      var currentName = document.getElementById('sq-current-user-name');
+                      if (currentName.innerHTML == '[Not logged in]') {
+                        document.getElementById('sq-current-user').style.display = 'none';
+                      }
+                    //]]> -->
+                    </script>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Registration</label>
+                        <div class="col-sm-10">
+                          <!-- input type="email" class="form-control" id="inputEmail3" placeholder="Email" -->
+                          <mysource_print var="username_box" size="10" class="sq-data form-control" id="inputEmail3" placeholder="Glastonbury Registration" required="required" autofocus="autofocus"/>
+                          <p>If you're in a group (trying for a ticket) enter your Glastonbury Registration. If not contact <a href="https://www.facebook.com/dletorey">Dave</a> and he'll sort you out.</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                          <!-- input type="password" class="form-control" id="inputPassword3" placeholder="Password" -->
+                          <mysource_print var="password_box" size="10" class="sq-data form-control"  id="inputPassword3" placeholder="password" required="required" autocomplete="off"/>
+                          <p>If you're in a group (trying for a ticket) enter your Postcode all uppercase and no spaces. e.g. <strong>EC2A4LD</strong> not <strong>Ec2a 4ld</strong></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <!-- button type="submit" class="btn btn-default">Sign in</button -->
+                          <mysource_print var="submit_button" value="Login" class="sq-data btn btn-default" />
+                        </div>
+                    </div>
+                    <mysource_print var="form_close" />
+                </div>
+              </mysource_login_section>
+            </mysource_area>
+            
         </div>
     </div>
-</div>
+    <script>
+        var d = document.getElementById("login_form_login_prompt");
+        d.className += " form-horizontal";
+    </script>
 </body>
 </html>
