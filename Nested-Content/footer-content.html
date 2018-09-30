@@ -14,9 +14,9 @@
 
 <script>
     if (navigator.serviceWorker) {
-        navigator.serviceWorker.register('./?a=xxxx')
-        .then( function (){
-            console.log('Success!');
+        navigator.serviceWorker.register('/serviceworker.js')
+        .then( function (registration){
+            console.log('Success!', registration.scope);
         })
         .catch( function () {
             console.error('Failure!');
