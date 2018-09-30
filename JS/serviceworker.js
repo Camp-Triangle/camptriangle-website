@@ -1,3 +1,4 @@
+const version = 'v0.01';
 const staticCacheName = 'staticfiles';
 
 addEventListener('install', installEvent => {
