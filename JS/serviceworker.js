@@ -2,6 +2,7 @@ const version = 'v0.01';
 const staticCacheName = 'staticfiles';
 
 addEventListener('install', installEvent => {
+    // @ts-ignore
     installEvent.waitUntil(
         caches.open(staticCacheName)
         .then( staticCache => {
@@ -19,7 +20,9 @@ addEventListener('install', installEvent => {
 
 // when browser requests a file check to see if it's in the cache
 addEventListener('fetch', fetchEvent => {
+    // @ts-ignore
     const request = fetchEvent.request;
+    // @ts-ignore
     fetchEvent.respondWith(
         // first look in the cache
         caches.match(request)
