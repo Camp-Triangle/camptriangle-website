@@ -2452,3 +2452,7 @@ section h1, section h2, section h3 {
   font-weight: 400;
   text-align: center;
 }
+svg {
+    max-width: 100%;
+    height: auto;
+}
