@@ -2456,3 +2456,7 @@ svg {
     max-width: 100%;
     height: auto;
 }
+
+.technology-right img {
+    max-width: 100%;
+}
