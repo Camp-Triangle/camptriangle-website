@@ -1,0 +1,211 @@
+<script>
+    /*@@ BEGIN Show/Hide Loader for page load and update group details @@*/
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("main").style.display = "block";
+      document.getElementById("aside").style.display = "block";
+    };
+    function showLoader() {
+      document.getElementById("loader").style.display = "block";
+      document.getElementById("main").style.display = "none";
+      document.getElementById("aside").style.display = "none";
+    };
+    /*@@ END Show/Hide Loader for page load and update group details @@*/
+    /*@@ BEGIN create empty variables to store data for functions @@*/
+    var groupData;
+    var jsonTimer;
+    var metadata_ticket = 240;
+    var metadata_showBank = 247;
+    var options = new Array();
+    options.key = '6478468380';
+    var js_api = null;
+    /*@@ END create empty variables to store data for functions @@*/
+    /*@@ BEGIN Build the list of unsuccessful and successful groups @@*/
+    var buildLists = function(groupData){
+        var unsucList = $('#unsuc');
+        var sucList = $('#suc');
+        unsucList.empty(); /*@@ Make sure our unsuc list is empty before updating it with our new data @@*/
+        sucList.empty(); /*@@ Make sure our suc list is empty before updating it with our new data @@*/
+        $.each(groupData, function(key,group){
+            if (group.asset_metadata_ticket === 'yes'){
+                suc.innerHTML+='<li><button id="' + group.asset_assetid + '" onclick="javascript:loadGroup(\'' + group.asset_assetid + '\')">' + group.asset_name + '</button></li>';
+            }
+            else {
+                unsuc.innerHTML+='<li><button id="' + group.asset_assetid + '" onclick="javascript:loadGroup(\'' + group.asset_assetid + '\')">' + group.asset_name + '</button></li>';
+            }
+        });
+    };
+    /*@@ END Build the list of unsuccessful and successful groups @@*/
+    /*@@ BEGIN Load the selected group @@*/
+    var loadGroup = function(id){
+        $('main').attr('data-id', id);
+        var groupName = $('.groupName');
+        groupName.empty();
+        groupName.each(function() {
+            $(this).html(groupData[id].asset_name);
+        });
+        if(groupData[id].asset_metadata_ticket === 'no'){
+            $("#groupUpdateButton").empty();
+            $("#groupUpdateButton").append('<a id="successifier" href="#" class="group btn btn-danger">Group Successful (DO NOT Click until the whole group has tickets)</a>');
+        } else {
+            $("#groupUpdateButton").empty();
+            $("#groupUpdateButton").append('<a id="successifier" href="#" class="group btn btn-success">Group Not Successful (Click to reset this group)</a>');
+        }
+        buildTable(groupData[id]);
+        buildBookMarklet(groupData[id]);
+    };
+    /*@@ END Load the selected group @@*/
+    /*@@ BEGIN Build the Table of the selected group's members @@*/
+    var buildTable = function(groupData) {
+        var table = $('#groupTableBody');
+        table.empty();
+        $.each(groupData['members'], function(key,member){
+            table.append('<tr><td>' + member.asset_name + '</td><td>' + member.asset_metadata_reg +'</td><td>' + member['asset_metadata_post.code'] + '</td><td>' + member.asset_metadata_Child + '</td><td>' + member.asset_metadata_telephone + '</td><td><a href="#" class="user" data-id="' + member.asset_assetid + '" data-ticket="' + member.asset_metadata_ticket + '">' + member.asset_metadata_ticket + '</a></td></tr>');
+        });
+    };
+    /*@@ BEGIN Build the Table of the selected group's members @@*/
+    /*@@ BEGIN Show Bank Details @@*/
+    var buildBankTable = function(groupData) {
+        var bankTable = $('#bankDetails');
+        bankTable.empty();
+        var bankActiveId = $('main').attr('data-id');
+        var showBank = groupData.asset_metadata_showBank;
+        if (showBank === "yes"){
+            bankTable.append('<tr><th>Account Name</th><td>' + groupData['asset_metadata_acc.name'] +'</td></tr><tr><th>Card Number</th><td>' + groupData['asset_metadata_card.number'] + '</td></tr><tr><th>Expiry Date</th><td>' + groupData['asset_metadata_expiry.date'] + '</td></tr><tr><th>CCV</th><td>' + groupData.asset_metadata_ccv + '</td></tr><tr><th>Bank Owner Tel</th><td>' + groupData['asset_metadata_bank.phone'] + '</td></tr>');
+        } else {console.log("No Bank");}
+    };
+    /*@@ END Show Bank Details @@*/
+    /*@@ BEGIN Build the Dragable Bookmarklet @@*/
+    var buildBookMarklet = function(groupData) {
+        var bookMarklet = $('#bookMarklet');
+        var bookMarkletCode = "javascript:(function(){";
+        $.each(groupData['members'], function(key,member){
+            bookMarkletCode += "document.getElementById('registrations_" + key + "__RegistrationId').value='" + member.asset_metadata_reg + "';";
+            bookMarkletCode += "document.getElementById('registrations_" + key + "__PostCode').value='" + member['asset_metadata_post.code'] + "';";
+        });
+        bookMarkletCode += "})()";
+        bookMarklet.attr('href',bookMarkletCode);
+    };
+    /*@@ END Build the Dragable Bookmarklet @@*/
+    /*@@ BEGIN Build the Page from the previous Functions @@*/
+    var buildPage = function(group) {
+        groupData = group;
+        buildTable(group);
+        buildBookMarklet(group);
+        buildLists(group);
+        var activeId = $('main').attr('data-id');
+        if (activeId){
+            var $activeButton = $('button[id="' + activeId + '"]');
+            if ($activeButton.closest('ul').attr('id') === "unsuc"){
+                $activeButton.click();
+            }
+            else{
+                $('#unsuc button').first().click();
+            }
+        }
+        showPage();
+    }
+    /*@@ END Build the Dragable Bookmarklet @@*/
+    /*@@ BEGIN load json function @@*/
+    var loadJson = function() {
+        $.getJSON( "/api/allgroupswithchildren.json", function( group ) {
+            buildPage(group);
+        }).then(function(){
+            showPage();
+        });
+    };
+    /*@@ END load json function @@*/
+    /*@@ BEGIN the whole page build once the page has loaded @@*/
+    $(document).ready(function() {
+        js_api = new Squiz_Matrix_API(options);
+        loadJson();
+        jsonTimer = setInterval(loadJson, 5000);
+    });
+    /*@@ END the whole page build once the page has loaded @@*/
+    /*@@ BEGIN Building the JS_API call when a group has been clicked @@*/
+    $(document).on('click', '#successifier', function(){
+        showLoader();
+        var activeId = $('main').attr('data-id');
+        var ticket = groupData[activeId].asset_metadata_ticket;
+        ticket = inversifier(ticket);
+        var showBank = groupData[activeId].asset_metadata_showBank;
+        showBank = inversifier(showBank);
+        var batchFunctions = {
+            "0":{
+                "function":"setMetadata",
+                "args":{
+                    "asset_id": activeId,
+                    "field_id": 240,
+                    "field_val": ticket
+                }
+            },
+            "1":{
+                "function":"setMetadata",
+                "args":{
+                    "asset_id": activeId,
+                    "field_id": 247,
+                    "field_val": showBank
+                }
+            }
+        };
+        $.each(groupData[activeId].members, function(key, member){
+            var memberTicket = member.asset_metadata_ticket;
+            memberTicket = inversifier(memberTicket);
+            batchFunctions[key + 2] = {
+                "function": "setMetadata",
+                "args": {
+                    "asset_id": member.asset_assetid,
+                    "field_id": 240,
+                    "field_val": memberTicket
+                }
+            };
+        });
+    
+        js_api.batchRequest({
+            "functions": batchFunctions,
+            "dataCallback":function() {
+                clearInterval(jsonTimer);
+                setTimeout(function(){
+                    $.getJSON( "/api/allgroupswithchildren.json/_recache", function( group ) {
+                        jsonTimer = setInterval(loadJson, 5000);
+                        buildPage(group);
+                    });
+                }, 4000);
+            }
+        });
+    });
+    /*@@ END Building the JS_API call when a group has been clicked @@*/
+    /*@@ BEGIN Building the JS_API call when a user has been clicked @@*/
+    $(document).on('click', '.user', function(){
+        showLoader();
+        var activeId = $(this).attr('data-id');
+        var userTicket = $(this).attr('data-ticket');
+        userTicket = inversifier(userTicket);
+        js_api.setMetadata({
+           "asset_id": activeId,
+           "field_id": 240,
+           "field_val": userTicket,
+           "dataCallback": function() {
+                clearInterval(jsonTimer);
+                setTimeout(function(){
+                    $.getJSON( "/api/allgroupswithchildren.json/_recache", function( group ) {
+                        jsonTimer = setInterval(loadJson, 5000);
+                        buildPage(group);
+                    });
+                }, 4000);
+            }
+        });
+    });
+    /*@@ END Building the JS_API call when a user has been clicked @@*/
+    /*@@ BEGIN Function that reverses the yes no metadata fields @@*/
+    function inversifier(bool){
+        if (bool === 'yes') {
+            bool = 'no';
+        }
+        else {
+            bool = 'yes';
+        }
+        return bool;
+    }
+    /*@@ END Function that reverses the yes no metadata fields @@*/
+</script>

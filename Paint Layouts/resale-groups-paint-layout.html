@@ -1,0 +1,38 @@
+<div id="loader"></div>
+<main data-id="2316" id="main" style="display:none">
+    <h2 class="groupName"></h2>
+    <table id="departureDetails"></table>
+    <h3>Group members</h3>
+    <p id="groupUpdateButton">
+        <a id="successifier" href="#" class="group btn btn-danger">Group Successful (DO NOT Click until the whole group has tickets)</a>
+    </p>
+    <table>
+        <thead>
+             <tr><th>Name</th><th>Registration</th><th>Post Code</th><th>Child</th><th>Telephone</th><th>Ticket</th></tr>
+        </thead>
+        <tbody id="groupTableBody">
+            <!--@@ members go here @@-->
+        </tbody>
+    </table>
+    <p>
+        <small>When booking a ticket for a <a href="https://www.glastonburyfestivals.co.uk/information/tickets/#CHILDREN" target="_blank">child</a> aged 13, 14 or 15, you must select the ‘CHILD’ ticket option, and confirm that their parent, carer or legal guardian has consented for their data to be processed.</small>
+    </p>
+    <h3>Bookmarklet</h3>
+    <p>Drag this link to your bookmarks toolbar.</p>
+    <p><a class="btn btn-lg btn-success groupName" id="bookMarklet"></a></p>
+    <table id="bankDetails">
+        <!--@@ Bank Details go here @@-->
+    </table>
+</main> 
+<aside id="aside" style="display:none">
+    <section>
+        <h2>Unsuccessful Groups</h2>
+        <!--@@ Unsuccessful groups go here @@-->
+        <ul id="unsuc"></ul>
+    </section>
+    <section>
+        <h2>Successful Groups</h2>
+        <!--@@ Successful groups go here @@-->
+        <ul id="suc"></ul>
+    </section>
+</aside>
