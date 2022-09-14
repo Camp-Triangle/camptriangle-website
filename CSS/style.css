@@ -2460,3 +2460,10 @@ svg {
 .technology-right img {
     max-width: 100%;
 }
+
+#ticket-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 60%;
+}
