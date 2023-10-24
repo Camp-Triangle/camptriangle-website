@@ -1344,6 +1344,7 @@ width:100%;
   vertical-align: top;
   border-top: none;
 }
+td.yes {color:red;}
 .grid1 {
   margin: 1.5em 0 0;
 }
